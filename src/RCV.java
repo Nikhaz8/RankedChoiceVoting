@@ -56,8 +56,8 @@ public class RCV {
             }
 
             temp = (String) sorted.keySet().toArray()[sorted.size() - 1];
+            System.out.println(sorted);
             if (sorted.get(temp) > ballots.size() / 2) {
-                System.out.println(sorted.keySet().toArray()[sorted.size() - 1]);
                 break;
             }
         } while (minSize > 0);
@@ -69,9 +69,9 @@ public class RCV {
      * @param numWinners The number of desired winners for this election
      */
     private static void calculateSingleTransferableVote(ArrayList<ArrayList<String>> ballots, int numWinners) {
-        int numBallots = ballots.size();
-        int quota = (int)((double)numBallots / ((double)numWinners + 1)) + 1;
-        int numElected = 0;
+        //int numBallots = ballots.size();
+        //int quota = (int)((double)numBallots / ((double)numWinners + 1)) + 1;
+        //int numElected = 0;
     }
 
     /**
@@ -84,13 +84,14 @@ public class RCV {
 
         //TODO: File path must be changed for each different user and file
         //This program only works with tab delimited txt files, which can be saved in excel sheets
-        File excel = new File("Insert file path");
+        File excel = new File("D:\\Nikhaz\\Downloads\\2021electionsVP.txt");
         Scanner fileScanner = new Scanner(excel);
 
         while(fileScanner.hasNextLine()) {
             String line = fileScanner.nextLine();
             ballots.add(new ArrayList<>(Arrays.asList(line.split("\\t"))));
         }
+        fileScanner.close();
         //TODO: Change this variable to represent the number of winners you have for this election
         int numWinners = 1;
 
